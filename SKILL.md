@@ -3,7 +3,7 @@ name: "context-directory-opinions"
 description: "Opinionated structure for a Context directory: the durable home for a project's plans, research, notes, schedules, program info, and shared memory as markup. Use when creating, saving, organizing, or reorganizing any durable documentation or planning material, when the user says to save, note, remember, capture, or document project material for later (even vaguely), never for personal reminders or in-chat preferences, when adding plans, meeting notes, research, or reference material to a repository, when reading or maintaining an existing Context directory and its index, or whenever a Temp-Context directory exists and needs draining into Context. Not for code documentation, READMEs, or comments that live with the source."
 metadata:
   author: "Leeor Nahum"
-  version: "2.5.0"
+  version: "2.5.1"
 ---
 
 # Context Directory Opinions
@@ -90,7 +90,7 @@ Run the generator after active Context changes:
 node <skill-root>/scripts/index.mjs <path-to-Context>
 ```
 
-The generated block lists active markup by directory with name, path, and description. It omits historical material and individual assets, validates active frontmatter, preserves authored text outside the guards, and warns when the instruction surface becomes large enough to deserve reorganization.
+The generated block lists each active markup file on one line with its directory and description. It omits historical material and individual assets, validates active frontmatter, preserves authored text outside the guards, and warns when the instruction surface becomes large enough to deserve reorganization.
 
 ## Naming And Ownership
 

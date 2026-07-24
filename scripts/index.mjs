@@ -133,26 +133,18 @@ function walk(dir) {
 
 walk(root);
 
-const groups = new Map();
-for (const doc of docs) {
-  const group = doc.rel.includes("/") ? doc.rel.slice(0, doc.rel.lastIndexOf("/")) : "Root";
-  if (!groups.has(group)) groups.set(group, []);
-  groups.get(group).push(doc);
-}
-
 const lines = [
   BEGIN,
   "",
-  "# Active Context Index",
+  "# Context Index",
   "",
   "Use the descriptions below to choose active project context. Historical material under `Archive/` is intentionally omitted.",
+  "",
 ];
 
-for (const [group, groupDocs] of groups) {
-  lines.push("", `## ${group}`, "");
-  for (const doc of groupDocs) {
-    lines.push(`- [${doc.name}](<${doc.rel}>): ${doc.description}`);
-  }
+for (const doc of docs) {
+  const directory = doc.rel.includes("/") ? doc.rel.slice(0, doc.rel.lastIndexOf("/")) : "Root";
+  lines.push(`- [${doc.name}](<${doc.rel}>) (${directory}) → ${doc.description}`);
 }
 
 if (broken.length) {
