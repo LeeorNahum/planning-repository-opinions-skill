@@ -30,7 +30,7 @@ Rules for editing the **context-directory-opinions** skill. User-facing guidance
 - `SKILL.md` and `README.md` describe the same behavior.
 - The version changed if and only if accepted behavior changed.
 - Script syntax, help, scratch generation, Archive exclusion, and two-pass idempotency pass.
-- The index uses one flat line per active document with its directory and description, and contains no individual assets.
+- The index uses one linked bullet per active document followed by an arrow and its description, and contains no individual assets.
 - Directory-density guidance supports useful depth without creating empty hierarchy.
 - No repeated Archive or Temp-Context explanation bloats the skill.
 - No em dashes or prose-joining semicolons were introduced.

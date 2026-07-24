@@ -138,17 +138,16 @@ const lines = [
   "",
   "# Context Index",
   "",
-  "Use the descriptions below to choose active project context. Historical material under `Archive/` is intentionally omitted.",
+  "Read `Context/AGENTS.md` before working in this directory. Follow any durable project instructions outside this generated block, use each description below as the trigger for what to read, and regenerate the index after any change.",
   "",
 ];
 
 for (const doc of docs) {
-  const directory = doc.rel.includes("/") ? doc.rel.slice(0, doc.rel.lastIndexOf("/")) : "Root";
-  lines.push(`- [${doc.name}](<${doc.rel}>) (${directory}) → ${doc.description}`);
+  lines.push(`- [${doc.name}](<${doc.rel}>) → ${doc.description}`);
 }
 
 if (broken.length) {
-  lines.push("", "## Unindexed active files", "");
+  lines.push("", "## Unindexed (fix frontmatter)", "");
   for (const rel of broken) lines.push(`- \`${rel}\``);
 }
 
