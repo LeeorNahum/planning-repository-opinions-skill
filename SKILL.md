@@ -3,7 +3,7 @@ name: "context-directory-opinions"
 description: "Opinionated structure for a Context directory: the durable home for a project's plans, research, notes, schedules, program info, and shared memory as markup. Use when creating, saving, organizing, or reorganizing any durable documentation or planning material, when the user says to save, note, remember, capture, or document project material for later (even vaguely), never for personal reminders or in-chat preferences, when adding plans, meeting notes, research, or reference material to a repository, when reading or maintaining an existing Context directory and its index, or whenever a Temp-Context directory exists and needs draining into Context. Not for code documentation, READMEs, or comments that live with the source."
 metadata:
   author: "Leeor Nahum"
-  version: "2.5.2"
+  version: "2.5.3"
 ---
 
 # Context Directory Opinions
@@ -43,7 +43,7 @@ Reconsider archival status when a phase closes, a decision is superseded, a one-
 
 ## Temp-Context
 
-`Temp-Context/` is optional staging for a user dump or an in-progress organization pass. Inspect every item, move current knowledge into its active owner, preserve worthwhile history in Archive, discard only clear noise, then remove the empty staging directory.
+`Temp-Context/` is optional staging at the repository root, beside `Context/`, for a user dump or an in-progress organization pass. When it exists in a Git repository, add `/Temp-Context/` to the root `.gitignore` before placing files there. Inspect every item, move current knowledge into its active owner, preserve worthwhile history in Archive, discard only clear noise, then remove the empty staging directory.
 
 ## Reading Discipline
 
