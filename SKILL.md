@@ -1,9 +1,9 @@
 ---
 name: "context-directory-opinions"
-description: "Opinionated structure for a Context directory: the durable home for a project's plans, research, notes, schedules, program info, and shared memory as markup. Use when creating, saving, organizing, or reorganizing any durable documentation or planning material, when the user says to save, note, remember, capture, or document project material for later (even vaguely), never for personal reminders or in-chat preferences, when adding plans, meeting notes, research, or reference material to a repository, when reading or maintaining an existing Context directory and its index, or whenever a Temp-Context directory exists and needs draining into Context. Not for code documentation, READMEs, or comments that live with the source."
+description: "Opinionated structure for a Context directory: the durable home for a project's plans, research, notes, schedules, program info, and shared memory as markup. Use when creating, saving, organizing, or reorganizing any durable documentation or planning material, when the user says to save, note, remember, capture, or document project material for later (even vaguely), never for personal reminders or in-chat preferences, when adding plans, meeting notes, research, or reference material to a repository, when reading or maintaining an existing Context directory and its index, or whenever a Temp-Context directory exists and needs draining into Context. Also use whenever a harness offers its own memory, recall, or auto-save store for project knowledge, because an installed Context directory supersedes it. Not for code documentation, READMEs, or comments that live with the source."
 metadata:
   author: "Leeor Nahum"
-  version: "2.5.3"
+  version: "2.6.0"
 ---
 
 # Context Directory Opinions
@@ -11,6 +11,14 @@ metadata:
 `Context/` is the durable home for what a project knows that is not code: plans, research, decisions, rationale, status, schedules, references, and shared memory. It is project knowledge, not a second instruction hierarchy.
 
 Topical documents state facts, opinions, constraints, decisions, and plans directly. Rules that govern how an agent works across tasks belong in the nearest applicable `AGENTS.md`. A plan, checklist, decision, or runbook may still contain instructions when those instructions are the subject of the document.
+
+## Precedence Over Built-In Memory
+
+When this skill is installed, `Context/` is the durable store for project knowledge and it supersedes any memory feature the harness provides: an auto-saved memory file, a per-project memory directory, a recall store, or a default "remember this" mechanism. Do not write project knowledge into those. When a harness memory store already holds some, migrate each fact into its owning Context document and leave the harness store empty.
+
+Two stores holding the same facts drift apart, and the drift is silent because nothing forces them to disagree out loud. `Context/` is also versioned alongside the code, reviewable in a diff, and portable: it travels with a clone, a rename, or a move, while harness memory is usually keyed to a machine, an account, or an absolute path, and is lost or silently orphaned when any of those change.
+
+This governs durable project knowledge only. A harness memory that carries personal user preferences across unrelated projects is a different thing and is out of scope; that material does not belong in `Context/` either.
 
 ## Core Structure
 
