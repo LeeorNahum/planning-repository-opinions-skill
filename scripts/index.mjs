@@ -17,6 +17,10 @@ const ARCHIVE = "Archive";
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const INDEX_WARNING_BYTES = 24 * 1024;
 const COMBINED_WARNING_BYTES = 32 * 1024;
+// Density and size prompts from the skill's "Density And Size" section. These are
+// prompts to look, not limits to enforce, so they warn and never fail the run.
+const DIR_FILES_REVIEW = 12;
+const DIR_FILES_SUBTOPIC = 20;
 
 if (process.argv.includes("--help")) {
   console.log(
@@ -172,11 +176,25 @@ if (indexBytes > INDEX_WARNING_BYTES) {
   console.warn(`WARNING: ${agentsPath} is ${indexBytes} bytes. Review active index scope and Context organization.`);
 }
 
+const dirCounts = new Map();
+for (const doc of docs) {
+  const dir = doc.rel.includes("/") ? doc.rel.slice(0, doc.rel.lastIndexOf("/")) : ".";
+  dirCounts.set(dir, (dirCounts.get(dir) ?? 0) + 1);
+}
+for (const [dir, count] of [...dirCounts].sort()) {
+  const where = dir === "." ? basename(root) : dir;
+  if (count > DIR_FILES_SUBTOPIC) {
+    console.warn(`WARNING: ${where} holds ${count} active files. Past ${DIR_FILES_SUBTOPIC} it needs clearer subtopics unless it is an intentional chronological or generated collection.`);
+  } else if (count > DIR_FILES_REVIEW) {
+    console.warn(`WARNING: ${where} holds ${count} active files. Past ${DIR_FILES_REVIEW} it is due an organization review.`);
+  }
+}
+
 const parentAgentsPath = resolve(root, "..", "AGENTS.md");
 if (existsSync(parentAgentsPath)) {
   const combinedBytes = indexBytes + Buffer.byteLength(readFileSync(parentAgentsPath, "utf8"), "utf8");
   if (combinedBytes > COMBINED_WARNING_BYTES) {
-    console.warn(`WARNING: root and Context AGENTS.md total ${combinedBytes} bytes. Some clients may truncate project instructions.`);
+    console.warn(`WARNING: root and Context AGENTS.md total ${combinedBytes} bytes of project instructions.`);
   }
 }
 

@@ -9,8 +9,25 @@ Every active Markdown and HTML file carries frontmatter with a selection descrip
 ## Files
 
 - `SKILL.md` contains the Context directory contract.
-- `scripts/index.mjs` regenerates the active index and validates active frontmatter.
+- `scripts/index.mjs` regenerates the active index, validates active frontmatter, and warns when a directory or a document has outgrown itself.
+- `package.json` exposes the generator as a `bin`, so it runs from the repository without being installed.
 - `AGENTS.md` is the maintenance contract for editing this skill.
+
+## Running the generator
+
+With the skill on disk, as a submodule or in a global skills folder:
+
+```bash
+node <skill-root>/scripts/index.mjs <path-to-Context>
+```
+
+Without it on disk, straight from this repository:
+
+```bash
+npx --yes github:LeeorNahum/context-directory-opinions-skill <path-to-Context>
+```
+
+Both routes run the same script and need only Node. The remote route fetches from GitHub the first time on a machine. Do not vendor a copy into a project: copies drift, and this route exists so nothing has to be.
 
 ## Validation
 
