@@ -112,7 +112,7 @@ node <skill-root>/scripts/index.mjs <path-to-Context>
 npx --yes github:LeeorNahum/context-directory-opinions-skill <path-to-Context>
 ```
 
-Node is the only requirement either way. The remote route fetches the script from its repository and needs network access the first time on a machine. Do not copy the script into the project: copies drift, and the remote route exists so nothing has to be vendored.
+Node is the only requirement either way. The remote route fetches the script from its repository and needs network access the first time on a machine.
 
 **The generator's warnings are work, not notes.** It reports the index size, flags frontmatter problems, and warns when a directory exceeds the file counts above. A warning is a task to do in that pass, or to name explicitly as deferred with a reason. Reading one and continuing is how a directory becomes unusable while every individual pass looks fine.
 

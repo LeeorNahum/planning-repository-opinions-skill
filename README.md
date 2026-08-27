@@ -27,7 +27,7 @@ Without it on disk, straight from this repository:
 npx --yes github:LeeorNahum/context-directory-opinions-skill <path-to-Context>
 ```
 
-Both routes run the same script and need only Node. The remote route fetches from GitHub the first time on a machine. Do not vendor a copy into a project: copies drift, and this route exists so nothing has to be.
+Both routes run the same script and need only Node. The remote route fetches from GitHub the first time on a machine.
 
 ## Validation
 
